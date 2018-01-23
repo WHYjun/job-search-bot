@@ -40,6 +40,7 @@ class JobSearch:
             word = str(result.get_text("", strip = True))
             if word != self.original[i]:
                 print("A new opening " + word + " at " + self.company[i])
+                self.update[i][3] = word
             else:
                 print("No Update at " + self.company[i])
         self.write()
