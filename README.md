@@ -1,2 +1,2 @@
 #job-search-bot
-Send a message to user if new job posted
+Notify users if new job posted
