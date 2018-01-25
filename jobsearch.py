@@ -15,6 +15,11 @@ class JobSearch:
         self.contact = []
         self.update = []
 
+    def request(self, url):
+        req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+        req = urllib.request.urlopen(req).read()
+        return req
+
     def export(self):
         self.update.append(next(self.reader))
         for line in self.reader:
@@ -34,8 +39,7 @@ class JobSearch:
     def check(self):
         self.export()
         for i in range(len(self.company)):
-            req = urllib.request.Request(self.urls[i], headers={'User-Agent': 'Mozilla/5.0'})
-            req = urllib.request.urlopen(req).read()
+            req = self.request(self.urls[i])
             soup = BeautifulSoup(req, 'html.parser')
             result = self.find(soup, self.name[i], i)
             word = str(result.get_text("", strip = True))
@@ -48,8 +52,7 @@ class JobSearch:
     def find(self, soup, name, i):
         if name.startswith('iframe'):
             iframe = soup.find('iframe')
-            response = urllib.request.Request(iframe.attrs['src'], headers={'User-Agent': 'Mozilla/5.0'})
-            response = urllib.request.urlopen(response).read()
+            response = self.request(iframes.attrs['src'])
             iframe_soup = BeautifulSoup(response)
             return iframe_soup.find(class_ = self.name[i][6:])
         else:
