@@ -1,5 +1,5 @@
 # Local files
-local/*
+server/local/*
 .vscode/
 
 # Byte-compiled / optimized / DLL files
