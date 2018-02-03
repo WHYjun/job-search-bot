@@ -1,3 +1,3 @@
 # job-search-bot
  
-Notify users if new job posted
+A python script to notify users if new job posted on a daily basis.
