@@ -22,7 +22,9 @@ class JobSearch:
             req = self.request(self.urls[i])
             soup = BeautifulSoup(req, 'html.parser')
             htmlcode = str(soup.prettify())
-            h1 = hashlib.md5(htmlcode.encode()).hexdigest()
+            self.writeTemp(htmlcode)
+            tmp = self.readTemp()
+            h1 = hashlib.md5(tmp.encode()).hexdigest()
             original = self.read(self.companyLst[i])
             h2 = hashlib.md5(original.encode()).hexdigest()
             if h1 != h2:
@@ -37,8 +39,19 @@ class JobSearch:
             result = f.read()
             return result
 
+    def readTemp(self):
+        filename = 'local/temp.txt'
+        with open(filename, 'r') as f:
+            result = f.read()
+            return result
+
     def write(self, companyName, htmlcode):
         filename = 'local/' + companyName +'Html.txt'
+        with open(filename, 'w') as f:
+            f.write(htmlcode)
+
+    def writeTemp(self, htmlcode):
+        filename = 'local/temp.txt'
         with open(filename, 'w') as f:
             f.write(htmlcode)
 
