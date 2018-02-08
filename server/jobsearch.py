@@ -34,9 +34,14 @@ class JobSearch:
                 print('No Update')
 
     def read(self, companyName):
-        filename = 'local/' + companyName +'Html.txt'
-        with open(filename, 'r') as f:
-            result = f.read()
+        try:
+            filename = 'local/' + companyName +'Html.txt'
+            with open(filename, 'r') as f:
+                result = f.read()
+                return result
+        except FileNotFoundError:
+            self.write(companyName,'New Company')
+            result = self.read(companyName)
             return result
 
     def readTemp(self):
