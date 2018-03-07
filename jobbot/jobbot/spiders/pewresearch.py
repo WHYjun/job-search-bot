@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from scrapy.linkextractors import LinkExtractor
 import scrapy
-
+from accessDB import compare
 
 class PewresearchSpider(scrapy.Spider):
     name = 'pewresearch'
@@ -11,6 +11,7 @@ class PewresearchSpider(scrapy.Spider):
     def parse(self, response):
         lx = LinkExtractor()
         lst = lx.extract_links(response) # List contains the list of jobs
-        # Call the function which compares between lst and MongoDB. Return Boolean Value
-
-        # if True, call the function which send an email to users
+        # @TODO Call the function which compares between lst and MongoDB. Return Boolean Value
+        flag = compare(name,lst)
+        # @TODO if True, call the function which send an email to users
+        

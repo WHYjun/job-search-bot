@@ -1,5 +1,5 @@
 # Files specific to this project
-server/local/*
+local/
 .vscode/
 config.json
 
