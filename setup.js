@@ -8,6 +8,15 @@
 // Load the configuration file.
 var config = JSON.parse(cat("config.json"));
 
+// Create role capable of evaluating stored functions.
+db = new Mongo().getDB('admin');
+db.dropRole("evaluator");
+db.createRole({
+  role: 'evaluator',
+  privileges: [{resource:{anyResource:true}, actions:['anyAction']}],
+  roles: []
+});
+
 // Create administration account for repository.
 db = new Mongo().getDB(config.repo.name);
 db.dropUser(config.admin.name);
@@ -15,6 +24,7 @@ db.createUser({
   user: config.admin.name, 
   pwd: config.admin.pwd, 
   roles: [
+      {role: "evaluator", db:'admin'},
       {role: "userAdmin", db: config.repo.name},
       {role: "readWrite", db: config.repo.name}
     ]
@@ -26,11 +36,17 @@ var userPwd = config.user.pwd
 if (db.system.users.find({user:userName}).count() > 0) {
     print("Found '" + userName + "' user in admin database; not creating a new user.");
 } else {
+    db.dropRole(userName);
+    db.createRole({
+        role: userName,
+        privileges: [],
+        roles: [{role: "read", db: config.repo.name}]
+      });
     db.dropUser(userName);
     db.createUser({
         user: userName,
         pwd: userPwd,
-        roles: [{role: "read", db: config.repo.name}]
+        roles: [{role: userName, db: config.repo.name}]
         });
 };
 
