@@ -28,18 +28,18 @@ mongo reset.js
 Then, copy the following JSON to any text editor and save as `config.json`. Please update name and password for security.
 ```
 {
-    "repo": {
-      "name": "repo"
-    },
-    "admin": {
-      "name": "name",
-      "pwd": "password"
-    },
-    "user":{
-      "name": "name",
-      "pwd": "password"
-    }
+  "repo": {
+    "name": "repo"
+  },
+  "admin": {
+    "name": "name",
+    "pwd": "password"
+  },
+  "user":{
+    "name": "name",
+    "pwd": "password"
   }
+}
 ```
 Finally, run `setup.js` to set your repository with your own name and password in `config.json`.
 ```
