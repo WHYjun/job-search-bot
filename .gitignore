@@ -3,6 +3,7 @@ local/
 .vscode/
 config.json
 *.txt
+spiders/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
