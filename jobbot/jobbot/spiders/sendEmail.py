@@ -36,8 +36,8 @@ class sendEmail:
         HOST = datastore['server']['host']
         PORT = datastore['server']['port']
         names, emails = self.contacts(company+'contacts.txt')
-
-        s = smtplib.SMTP(host=HOST, port=PORT)
+        
+        s = smtplib.SMTP(HOST+':'+PORT)
         s.ehlo()
         s.starttls()
         s.login(ADDRESS, PASSWORD)
