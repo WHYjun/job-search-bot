@@ -17,10 +17,15 @@ class PewresearchSpider(scrapy.Spider):
     def parse(self, response):
         name = 'pewresearch'
         lx = LinkExtractor()
-        lst = lx.extract_links(response) # List contains the list of jobs
+        urls = lx.extract_links(response) # List contains the list of jobs
+        lst = []
+        for url in urls:
+            jobtitle = str(url.text)
+            if "\nJob Title\n\n" in jobtitle:
+                lst.append(jobtitle[12:])
         # Call the function which compares between lst and MongoDB. Return Boolean Value
         flag = compare(name,lst)
-        # @TODO if True, call the function which send an email to users
+        # if True, call the function which send an email to users
         if flag:
             notify(name)
             print("Notified")
