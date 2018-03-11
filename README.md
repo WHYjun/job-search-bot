@@ -52,5 +52,4 @@ mongod --auth --dbpath "<your_db_path>"
 
 ## Future Works
 
-- Add the functionality to send a text message or email to user.
-- Notify users if and only if the company posts a new job posting, not remove old job postings.
+- Add the functionality to filter the job title.
