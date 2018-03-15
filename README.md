@@ -4,6 +4,11 @@ A Scrapy-based Python web crawler to notify users on a daily basis with up-to-da
 
 ## Getting Started
 
+### Clone the repo
+```
+git clone git@github.com:WHYjun/job-search-bot.git
+```
+
 ### Setting up Requirements
 
 The `requirements.txt` file should list all Python libraries that you should install to run `Job Search Bot`. You can install required libraries by using:
@@ -52,11 +57,9 @@ Now, stop `mongod` and restart it with the following command (Enabling authentic
 mongod --auth --dbpath "<your_db_path>"
 ```
 
-### Clone the repo
-```
-git clone git@github.com:WHYjun/job-search-bot.git
-```
-After cloning the repo, change directory to `/jobbot/jobbot/spiders`, and run `scrapy genspider <company_name> <company_base_url>`. Please update the created file refer to `example.py`. 
+### Run Job Search Bot
+
+After setting up all requirements, change directory to `/jobbot/jobbot/spiders`, and run `scrapy genspider <company_name> <company_base_url>`. Please update the created file refer to `example.py`. 
 
 
 ## Future Works
