@@ -1,8 +1,10 @@
 # job-search-bot
 
-A python script to notify users if new job posted on a daily basis.
+A Scrapy-based Python web crawler to notify users on a daily basis with up-to-date job postings.
 
-## Installation
+## Getting Started
+
+### Setting up Requirements
 
 The `requirements.txt` file should list all Python libraries that you should install to run `Job Search Bot`. You can install required libraries by using:
 
@@ -13,7 +15,7 @@ pip install -r requirements.txt
 
 If you don't have pip yet, please install `pip` from the following link: https://pip.pypa.io/en/stable/installing/
 
-## Setting up MongoDB
+### Setting up MongoDB
 
 If you don't have MongoDB yet, please install `MongoDB` from the following link: https://docs.mongodb.com/manual/installation/
 
@@ -35,7 +37,7 @@ Then, copy the following JSON to any text editor and save as `config.json`. Plea
     "name": "name",
     "pwd": "password"
   },
-  "user":{
+  "user": {
     "name": "name",
     "pwd": "password"
   }
@@ -49,6 +51,13 @@ Now, stop `mongod` and restart it with the following command (Enabling authentic
 ```
 mongod --auth --dbpath "<your_db_path>"
 ```
+
+### Clone the repo
+```
+git clone git@github.com:WHYjun/job-search-bot.git
+```
+After cloning the repo, change directory to `/jobbot/jobbot/spiders`, and run `scrapy genspider <company_name> <company_base_url>`. Please update the created file refer to `example.py`. 
+
 
 ## Future Works
 
