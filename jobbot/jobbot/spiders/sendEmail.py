@@ -17,11 +17,11 @@ def contacts(filename):
     return names, emails
 
 def writeMessage(name,companyName):
-    message = "Dear " + name +",\n" \
-            + "We found a new job posting at " + companyName + ".\n" \
-            + "Thank you very much for using our services.\n\n" \
+    message = "Hello " + name +",\n" \
+            + "We found a new job posting at " + companyName + " on Job Bot.\n" \
+            + "Thank you very much for using our services and we hope to provide you with more quality content in the future.\n\n" \
             + "Sincerely,\n" \
-            + "Job Search Bot"
+            + "The Job Bot Team"
     return message
 
 def notify(company):
