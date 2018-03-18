@@ -31,5 +31,4 @@ def compare(company,jobs):
             dic['lst'] = jobs
             repo[collectionName].insert(dic)
             return True
-        else:
-            return False
+    return False
