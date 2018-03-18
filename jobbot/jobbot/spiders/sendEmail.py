@@ -29,6 +29,7 @@ def notify(company):
     filename = os.path.join(scriptpath, 'config.json')
     with open(filename) as f:
         datastore = json.load(f)
+    f.close()
 
     ADDRESS = datastore['email']['address']
     PASSWORD = datastore['email']['pwd']
@@ -46,10 +47,14 @@ def notify(company):
         message = writeMessage(name, company)
 
         # print(message)
+        filename = os.path.join(scriptpath, 'company.json')
+        with open(filename) as f:
+            companyName = json.load(f)
+        f.close()
 
         msg['From']=ADDRESS
         msg['To']=email
-        msg['Subject']="Found a new job posting at " + company
+        msg['Subject']="Found a new job posting at " + companyName.company
 
         msg.attach(MIMEText(message, 'plain'))
 
