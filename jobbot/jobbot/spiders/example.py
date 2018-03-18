@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 from scrapy.linkextractors import LinkExtractor
 import scrapy
+
 import os
 import sys
 
-scriptpath = os.path.dirname(__file__)
-sys.path.append(os.path.abspath(scriptpath))
 from accessDB import compare
 from sendEmail import notify
 
