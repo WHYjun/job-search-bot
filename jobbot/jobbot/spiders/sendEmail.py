@@ -54,7 +54,7 @@ def notify(company):
 
         msg['From']=ADDRESS
         msg['To']=email
-        msg['Subject']="Found a new job posting at " + companyName.company
+        msg['Subject']="Found a new job posting at " + companyName[company]
 
         msg.attach(MIMEText(message, 'plain'))
 
