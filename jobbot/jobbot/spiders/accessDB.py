@@ -3,18 +3,15 @@ import pymongo
 import json
 import os.path
 
-def compare(company,jobs):
+
+def compare(company, jobs):
     scriptpath = os.path.dirname(__file__)
     filename = os.path.join(scriptpath, 'config.json')
     with open(filename) as f:
         datastore = json.load(f)
 
-    name = datastore['user']['name']
-    pwd = datastore['user']['pwd']
-
     client = pymongo.MongoClient()
     repo = client.repo
-    repo.authenticate(name, pwd)
 
     collectionName = company + 'list'
     try:
